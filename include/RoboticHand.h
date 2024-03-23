@@ -1,9 +1,11 @@
 #include <Arduino.h>
 #include <Servo.h>
+#include <SoftwareSerial.h>
 
 class RoboticHand 
 {
-private:
+public:
+
     int BaseServoPin;
     int HeightServoPin;
     int MovementServoPin;
@@ -11,7 +13,6 @@ private:
     int TX;
     int RX;
 
-public:
     class Base
     {
     private:
@@ -22,26 +23,24 @@ public:
 
     class Height
     {
-    private:
     public:
+        Servo HeightServo;
         void MoveTo();
     };
 
     class Claw
     {
-    private:
     public:
+        Servo ClawServo;
         void MoveTo();
     };
 
     class Movement
     {
-    private:
     public:
+        Servo MovementServo;
         void MoveTo();
     };
-    
-    void Initiate();
 
     Base base;
     Height height;

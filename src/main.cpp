@@ -1,9 +1,16 @@
 #include "RoboticHand.h"
 
-RoboticHand hand;
+RoboticHand Arm;
+
+SoftwareSerial BluetoorhSerial(3,4);
+
+
 void setup() {
   // put your setup code here, to run once:
-  hand.Initiate();
+  Arm.base.BaseServo.attach(Arm.BaseServoPin);
+  Arm.height.HeightServo.attach(Arm.HeightServoPin);
+  Arm.claw.ClawServo.attach(Arm.ClawServoPin);
+  Arm.Movement.MovementServo.attach(Arm.MovementServoPin);
 }
 
 void loop() {
