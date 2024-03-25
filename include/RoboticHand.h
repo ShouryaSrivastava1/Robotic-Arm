@@ -10,36 +10,43 @@ public:
     int HeightServoPin;
     int MovementServoPin;
     int ClawServoPin;
+
+
+    int BaseDefualtAngle;
+    int HeightDefualtAngle;
+    int MovementDefualtAngle;
+    int ClawDefualtAngle;
+
+
     int TX;
     int RX;
 
     class Base
     {
-    private:
     public:
-        Servo BaseServo;
         void MoveTo(int angle, int interval);
+        Servo BaseServo;
     };
 
     class Height
     {
     public:
         Servo HeightServo;
-        void MoveTo();
+        void MoveTo(int angle, int interval);
     };
 
     class Claw
     {
     public:
         Servo ClawServo;
-        void MoveTo();
+        void MoveTo(int angle, int interval);
     };
 
     class Movement
     {
     public:
         Servo MovementServo;
-        void MoveTo();
+        void MoveTo(int angle, int interval);
     };
 
     Base base;

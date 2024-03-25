@@ -2,5 +2,22 @@
 
 void RoboticHand::Base::MoveTo(int angle, int interval)
 {
-    BaseServo.write(angle);
+    int CurrentAngle = BaseServo.read();
+
+    if (angle > CurrentAngle)
+    {
+        for(int pos = CurrentAngle; pos < angle; pos++)
+        {
+            BaseServo.write(pos);
+            delay(interval);
+        }
+    }
+    else if(angle < CurrentAngle)
+    {
+        for(int pos = CurrentAngle; pos > angle; pos--)
+        {
+            BaseServo.write(pos);
+            delay(interval);
+        }
+    }
 }
