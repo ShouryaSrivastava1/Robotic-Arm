@@ -5,21 +5,40 @@
 class RoboticHand 
 {
 public:
-
+    // Assign Value Before Calling init() for initialsation
     int BaseServoPin;
+    // Assign Value Before Calling init() for initialsation
     int HeightServoPin;
+    // Assign Value Before Calling init() for initialsation
     int MovementServoPin;
+    // Assign Value Before Calling init() for initialsation
     int ClawServoPin;
 
-
+    // Assign Value Before Calling init() for initialsation
     int BaseDefualtAngle;
+    // Assign Value Before Calling init() for initialsation
     int HeightDefualtAngle;
+    // Assign Value Before Calling init() for initialsation
     int MovementDefualtAngle;
+    // Assign Value Before Calling init() for initialsation
     int ClawDefualtAngle;
 
 
-    int TX;
-    int RX;
+
+    void init()
+    {
+        // Move To Deafault Positions, Using 1 interval to make it fast
+        base.MoveTo(BaseDefualtAngle, 1);
+        height.MoveTo(HeightDefualtAngle, 1);
+        Movement.MoveTo(MovementDefualtAngle, 1);
+        claw.MoveTo(ClawDefualtAngle, 1);
+
+        // attach servos
+        base.BaseServo.attach(BaseServoPin);
+        height.HeightServo.attach(HeightServoPin);
+        claw.ClawServo.attach(ClawServoPin);
+        Movement.MovementServo.attach(MovementServoPin);
+    }
 
     class Base
     {

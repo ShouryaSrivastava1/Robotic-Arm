@@ -1,5 +1,5 @@
 #include "RoboticHand.h"
-
+#include <SoftwareSerial.h>
 RoboticHand Arm;
 
 SoftwareSerial BluetoorhSerial(3,4);
@@ -20,19 +20,8 @@ void setup() {
   Arm.HeightDefualtAngle = 0;
   Arm.MovementDefualtAngle = 90;
   Arm.ClawDefualtAngle = 90;
-
-
-  // Move To Deafault Positions, Using 1 interval to make it fast
-  Arm.base.MoveTo(Arm.BaseDefualtAngle, 1);
-  Arm.height.MoveTo(Arm.HeightDefualtAngle, 1);
-  Arm.Movement.MoveTo(Arm.MovementDefualtAngle, 1);
-  Arm.claw.MoveTo(Arm.ClawDefualtAngle, 1);
-
-  // attach servos
-  Arm.base.BaseServo.attach(Arm.BaseServoPin);
-  Arm.height.HeightServo.attach(Arm.HeightServoPin);
-  Arm.claw.ClawServo.attach(Arm.ClawServoPin);
-  Arm.Movement.MovementServo.attach(Arm.MovementServoPin);
+  // asigning valuses to the above variabls in required for the correct functioning before calling this fucntion
+  Arm.init();
   delay(500);
 }
 
